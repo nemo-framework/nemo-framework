@@ -2,12 +2,27 @@ package nemo.variable;
 
 import java.util.BitSet;
 
+import nemo.util.PseudoRandom;
+
 public class Binary extends Variable {
 
 	protected BitSet bits;
+	
+	protected int numberOfBits;
 
 	public Binary(int numberOfBits) {
-		bits = new BitSet(numberOfBits);
+
+		this.numberOfBits = numberOfBits;
+		this.bits = new BitSet(numberOfBits);
+
+		for (int i = 0; i < numberOfBits; i++) {
+
+			if (PseudoRandom.randDouble() < 0.5) {
+				set(i, true);
+			} else {
+				set(i, false);
+			}
+		}
 	}
 	
 	public void set(int bit, boolean value) {
@@ -17,11 +32,4 @@ public class Binary extends Variable {
 	public boolean get(int bit) {
 		return this.bits.get(bit);
 	}
-
-	@Override
-	public Variable createRandomVariable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

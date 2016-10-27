@@ -41,7 +41,7 @@ public abstract class EvolutionaryAlgorithm extends Algorithm {
 		return initialization.execute(problem, populationSize);
 	}
 	
-	public List<Solution> evaluatePopulation(List<Solution> population) {
+	public List<Solution> evaluate(List<Solution> population) {
 		for (int i = 0; i < populationSize; i++) {
 			problem.evaluate(population.get(i));
 		}

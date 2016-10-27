@@ -6,7 +6,23 @@ import nemo.variable.Variable;
 
 public abstract class Problem {
 	
-	protected String solutionType;
+	public Solution createRandomSolution() {
+
+		String solutionType = getSolutionType();
+
+		Variable[] variables = new Variable[getNumberOfVariables()];
+
+		for (int i = 0; i < getNumberOfVariables(); i++) {
+
+			if (solutionType.equalsIgnoreCase("Binary")) {
+				variables[i] = new Binary(getUpperBound(i));
+			} else if (solutionType.equalsIgnoreCase("Integer")) {
+
+			}
+		}
+
+		return new Solution(this, variables);
+	}
 	
 	protected double maximize(double value) {
 		return -1.0 * value;
@@ -15,22 +31,7 @@ public abstract class Problem {
 	protected double minimize(double value) {
 		return value;
 	}
-
-	
-
-	public Solution createRandomSolution() {
-
-		Variable[] variables = new Variable[getNumberOfVariables()];
-
-		for (int i = 0; i < getNumberOfVariables(); i++) {
-			if (solutionType.equalsIgnoreCase("Binary")) {
-				variables[i] = new Binary(2);
-			}
-		}
-
-		return new Solution(this, variables);
-	}
-	
+			
 	/* Methods */
 	public abstract void evaluate(Solution solution);
 
@@ -41,8 +42,12 @@ public abstract class Problem {
 
 	public abstract int getNumberOfConstraints();
 	
+	public abstract int getUpperBound(int variable);
+	
+	public abstract int getLowerBound(int variable);
+	
 	public abstract String getSolutionType();
-
+	
 	public abstract String getName();
 
 }

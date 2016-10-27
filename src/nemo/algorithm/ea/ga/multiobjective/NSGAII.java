@@ -1,7 +1,8 @@
-package nemo.algorithm.ea.ga;
+package nemo.algorithm.ea.ga.multiobjective;
 
 import java.util.List;
 
+import nemo.algorithm.ea.ga.GeneticAlgorithm;
 import nemo.problem.Problem;
 import nemo.solution.Solution;
 

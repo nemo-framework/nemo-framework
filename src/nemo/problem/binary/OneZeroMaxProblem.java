@@ -4,20 +4,17 @@ import nemo.problem.Problem;
 import nemo.solution.Solution;
 import nemo.variable.Binary;
 
-public class OneZeroMaxProblem extends Problem{
-	
+public class OneZeroMaxProblem extends Problem {
+
 	protected int numberOfBits;
-	
+
 	public OneZeroMaxProblem(int numberOfBits) {
 		this.numberOfBits = numberOfBits;
-	}
-	
-	public OneZeroMaxProblem() {
-		this(512);
 	}
 
 	@Override
 	public void evaluate(Solution solution) {
+
 		Binary variable = ((Binary) solution.getVariables()[0]);
 
 		int counterOnes = 0;
@@ -34,7 +31,7 @@ public class OneZeroMaxProblem extends Problem{
 		solution.setObjective(0, maximize(counterOnes));
 		solution.setObjective(1, maximize(counterZeroes));
 	}
-	
+
 	@Override
 	public int getNumberOfVariables() {
 		return 1;
@@ -48,6 +45,16 @@ public class OneZeroMaxProblem extends Problem{
 	@Override
 	public int getNumberOfConstraints() {
 		return 0;
+	}
+
+	@Override
+	public int getUpperBound(int variable) {
+		return numberOfBits;
+	}
+
+	@Override
+	public int getLowerBound(int variable) {
+		return numberOfBits;
 	}
 
 	@Override
