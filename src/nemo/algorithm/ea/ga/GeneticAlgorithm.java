@@ -2,7 +2,6 @@ package nemo.algorithm.ea.ga;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import nemo.algorithm.ea.EvolutionaryAlgorithm;
 import nemo.component.archiving.Archiving;
 import nemo.component.operator.crossover.CrossoverOperator;
@@ -53,7 +52,6 @@ public abstract class GeneticAlgorithm extends EvolutionaryAlgorithm {
 			offspringPopulation = evaluate(offspringPopulation);
 			
 			population = replacement(population, offspringPopulation);
-
 		}
 		
 		return null;

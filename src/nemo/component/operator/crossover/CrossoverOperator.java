@@ -1,6 +1,9 @@
 package nemo.component.operator.crossover;
 
+import java.util.List;
+
 import nemo.component.operator.Operator;
+import nemo.solution.Solution;
 
 public abstract class CrossoverOperator extends Operator {
 
@@ -13,4 +16,6 @@ public abstract class CrossoverOperator extends Operator {
 	public CrossoverOperator() {
 		this(DEFAULT_PROBABILITY);
 	}
+	
+	public abstract List<Solution> execute(List<Solution> matingPopulation);
 }

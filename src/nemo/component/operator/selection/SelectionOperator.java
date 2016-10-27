@@ -1,7 +1,6 @@
 package nemo.component.operator.selection;
 
 import java.util.List;
-
 import nemo.component.operator.Operator;
 import nemo.solution.Solution;
 

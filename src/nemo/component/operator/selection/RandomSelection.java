@@ -24,7 +24,7 @@ public class RandomSelection extends SelectionOperator {
 			int pos = PseudoRandom.randInt(0, populationSize - 1);
 
 			// Add the selected solution to mating population
-			matingPopulation.add(population.get(pos));
+			matingPopulation.add(population.get(pos).copy());
 		}
 
 		return matingPopulation;

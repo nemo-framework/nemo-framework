@@ -20,8 +20,12 @@ public abstract class Problem {
 
 			}
 		}
+		
+		Solution solution = new Solution(this);
+		
+		solution.setVariables(variables);
 
-		return new Solution(this, variables);
+		return new Solution(this);
 	}
 	
 	protected double maximize(double value) {
