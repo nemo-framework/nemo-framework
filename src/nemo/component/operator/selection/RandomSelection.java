@@ -7,8 +7,8 @@ import nemo.util.PseudoRandom;
 
 public class RandomSelection extends SelectionOperator {
 
-	public RandomSelection(double probability) {
-		super(probability);
+	public RandomSelection() {
+		super(0.0);
 	}
 
 	@Override

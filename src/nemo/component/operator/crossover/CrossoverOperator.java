@@ -12,10 +12,16 @@ public abstract class CrossoverOperator extends Operator {
 	public CrossoverOperator(double probability) {
 		super(probability);
 	}
+	
+	public List<Solution> execute(List<Solution> parents) {
+		if (parents == null) {
+			throw new IllegalArgumentException("The mating population cannot be null");
+		} else if (parents.size() != 2) {
+			throw new IllegalArgumentException("There must be two parents");
+		}
 
-	public CrossoverOperator() {
-		this(DEFAULT_PROBABILITY);
+		return doCrossover(parents.get(0), parents.get(1));
 	}
 	
-	public abstract List<Solution> execute(List<Solution> matingPopulation);
+	protected abstract List<Solution> doCrossover(Solution parent1, Solution parent2);
 }

@@ -15,12 +15,12 @@ public class GenerationalOneChildrenReproduction extends Reproduction {
 		
 		for (int i = 0, j = 0; i < offspringSize; i++, j += 2) {
 			
-			SolutionSet parents = new SolutionSet(2);
+			List<Solution> parents = new ArrayList<Solution>(2);
 
 			parents.add(matingPopulation.get(j % matingPopulation.size()));
 			parents.add(matingPopulation.get((j + 1) % matingPopulation.size()));
 
-			SolutionSet offspring = new SolutionSet(1);
+			List<Solution> offspring = new ArrayList<Solution>(1);
 
 			if (crossoverOperator != null) {
 				offspring = crossoverOperator.execute(parents);

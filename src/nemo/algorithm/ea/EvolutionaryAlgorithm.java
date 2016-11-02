@@ -47,4 +47,8 @@ public abstract class EvolutionaryAlgorithm extends Algorithm {
 		}
 		return population;
 	}
+	
+	protected boolean isStoppingConditionReached(){
+		return false;
+	}
 }

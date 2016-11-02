@@ -17,7 +17,7 @@ public abstract class Problem {
 			if (solutionType.equalsIgnoreCase("Binary")) {
 				variables[i] = new Binary(getUpperBound(i));
 			} else if (solutionType.equalsIgnoreCase("Integer")) {
-
+				// TODO Implementar para inteiro
 			}
 		}
 		

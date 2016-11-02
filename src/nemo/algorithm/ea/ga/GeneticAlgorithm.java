@@ -41,19 +41,21 @@ public abstract class GeneticAlgorithm extends EvolutionaryAlgorithm {
 		population = createInitialPopulation();
 		population = evaluate(population);
 
-		int generations = 0;
-		
-		while (generations < 100) {
-			
+		archive(population);
+
+		while (!isStoppingConditionReached()) {
+
 			matingPopulation = selection(population);
-			
+
 			offspringPopulation = reproduction(matingPopulation);
-			
+
 			offspringPopulation = evaluate(offspringPopulation);
-			
+
 			population = replacement(population, offspringPopulation);
+
+			archive(offspringPopulation);
 		}
-		
+
 		return null;
 	}
 	
@@ -79,5 +81,13 @@ public abstract class GeneticAlgorithm extends EvolutionaryAlgorithm {
 		}
 
 		return archiving.getArchive();
+	}
+
+	protected void archive(List<Solution> population) {
+		if (archiving == null) {
+			return;
+		}
+
+		archiving.archive(population);
 	}
 }

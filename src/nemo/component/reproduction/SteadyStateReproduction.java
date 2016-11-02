@@ -1,37 +1,38 @@
-package ga.component.reproduction;
+package nemo.component.reproduction;
 
-import ga.component.operator.crossover.CrossoverOperator;
-import ga.component.operator.mutation.MutationOperator;
-import jmetal.core.Solution;
-import jmetal.core.SolutionSet;
+import java.util.ArrayList;
+import java.util.List;
+import nemo.component.operator.crossover.CrossoverOperator;
+import nemo.component.operator.mutation.MutationOperator;
+import nemo.solution.Solution;
 
 public class SteadyStateReproduction extends Reproduction {
 
 	@Override
-	public SolutionSet reproduction(SolutionSet matingPopulation, int offspringSize, CrossoverOperator crossover, MutationOperator mutation) throws ClassNotFoundException {
+	public List<Solution> execute(List<Solution> matingPopulation, int offspringSize, CrossoverOperator crossoverOperator, MutationOperator mutationOperator) {
 		
-		SolutionSet offspringPopulation = new SolutionSet(offspringSize);
+		List<Solution> offspringPopulation = new ArrayList<Solution>(offspringSize);
 
-		SolutionSet parents = new SolutionSet(2);
+		List<Solution> parents = new ArrayList<Solution>(2);
 
 		parents.add(matingPopulation.get(0));
 		parents.add(matingPopulation.get(1));
 
-		SolutionSet offspring = new SolutionSet(1);
-        
-        if (crossover != null) {
-            offspring = crossover.execute(parents);
-        } else {
-            offspring.add(new Solution(parents.get(0)));
-        }
+		List<Solution> offspring = new ArrayList<Solution>(1);
 
-        if (mutation != null) {
-        	mutation.execute(offspring.get(0));
-        }
+		if (crossoverOperator != null) {
+			offspring = crossoverOperator.execute(parents);
+		} else {
+			offspring.add(new Solution(parents.get(0)));
+		}
 
-        offspringPopulation.add(offspring.get(0));
+		if (mutationOperator != null) {
+			mutationOperator.execute(offspring.get(0));
+		}
 
-        return offspringPopulation;
+		offspringPopulation.add(offspring.get(0));
+
+		return offspringPopulation;
 	}
 
 }

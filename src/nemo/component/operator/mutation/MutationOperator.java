@@ -1,6 +1,7 @@
 package nemo.component.operator.mutation;
 
 import nemo.component.operator.Operator;
+import nemo.solution.Solution;
 
 public abstract class MutationOperator extends Operator {
 
@@ -13,4 +14,6 @@ public abstract class MutationOperator extends Operator {
 	public MutationOperator() {
 		this(DEFAULT_PROBABILITY);
 	}
+	
+	public abstract Solution execute(Solution solution);
 }
